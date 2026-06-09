@@ -1,26 +1,26 @@
 import mongoose from "mongoose";
 
-const noteSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
     {
-        title: {
+        username: {
             type: String,
             required: true,
         },
 
-        content: {
+        email: {
             type: String,
             required: true,
+            unique: true,
         },
 
-        user: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
+        password: {
+            type: String,
             required: true,
         },
     },
     { timestamps: true }
 );
 
-const Note = mongoose.model("Note", noteSchema);
+const User = mongoose.model("User", userSchema);
 
-export default Note;
+export default User;
